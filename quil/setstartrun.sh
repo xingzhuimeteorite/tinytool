@@ -4,7 +4,7 @@ echo '' >> start_quil.sh
 echo '# 检查是否存在 screen 会话' >> start_quil.sh
 echo 'if screen -list | grep -q "node"; then' >> start_quil.sh
 echo '  echo "Screen session '\''node'\'' already exists."' >> start_quil.sh
-echo '  exit 1' >> start_quil.sh
+echo '  exit 0' >> start_quil.sh
 echo 'fi' >> start_quil.sh
 echo '' >> start_quil.sh
 echo '# 启动 screen 会话并执行命令' >> start_quil.sh
@@ -37,3 +37,4 @@ WantedBy=default.target
 EOF
 echo "Systemd unit file created: $UNIT_FILE"
 systemctl enable start_quil
+systemctl start start_quil.service
