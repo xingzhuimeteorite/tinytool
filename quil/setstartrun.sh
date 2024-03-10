@@ -14,3 +14,25 @@ echo '' >> start_quil.sh
 echo 'echo "Screen session '\''node'\'' started."' >> start_quil.sh
 chmod +x start_quil.sh
 bash start_quil.sh
+
+UNIT_FILE="/etc/systemd/system/start_quil.service"
+USERNAME="root"
+GROUPNAME="root"
+
+cat <<EOF | sudo tee $UNIT_FILE
+[Unit]
+Description=Start Quil Script
+After=network.target
+
+[Service]
+ExecStart=/etc/systemd/system/start_quil.sh
+WorkingDirectory=/etc/systemd/system/
+Restart=always
+User=$USERNAME
+Group=$GROUPNAME
+StandardOutput=syslog
+
+[Install]
+WantedBy=default.target
+EOF
+echo "Systemd unit file created: $UNIT_FILE"
