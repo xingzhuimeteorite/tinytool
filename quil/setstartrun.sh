@@ -36,3 +36,4 @@ StandardOutput=syslog
 WantedBy=default.target
 EOF
 echo "Systemd unit file created: $UNIT_FILE"
+systemctl enable start_quil
