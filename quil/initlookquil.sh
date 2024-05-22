@@ -12,6 +12,7 @@ if [ \$? = 0 ];then
     exit
 fi
 tmux new-session -d -s \$session
+tmux send-keys -t \$session:0 'sudo -i' C-m
 tmux send-keys -t \$session:0 'cd /root/ceremonyclient/node/' C-m
 tmux send-keys -t \$session:0 'gvm use go1.20.14' C-m
 tmux send-keys -t \$session:0 'GOEXPERIMENT=arenas go run ./... ' C-m
