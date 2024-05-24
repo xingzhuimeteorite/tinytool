@@ -37,7 +37,7 @@ cat <<EOF
 /bin/sh /root/start_quil.sh
 EOF
 )> /root/restart_quil.sh
-chmod +x  /root/stop_quil.sh
+chmod +x  /root/restart_quil.sh
 
 
 
